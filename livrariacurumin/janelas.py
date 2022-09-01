@@ -1,6 +1,7 @@
 import PySimpleGUI as sg 
 
 
+#janela1
 def janela_vendedor():
     sg.theme('DarkBrown')
     layout = [
@@ -19,6 +20,7 @@ def janela_vendedor():
     
     return sg.Window('Login', layout, element_justification='c',finalize=True)
 
+#janela2
 def janela_cadastro_vendedor():
     sg.theme('DarkBrown')
     layout = [
@@ -35,6 +37,7 @@ def janela_cadastro_vendedor():
     
     return sg.Window('Cadastro - Vendedor', layout, element_justification='c', finalize=True)
 
+#janela3
 def janela_sistema():
     sg.theme('DarkBrown')
     layout = [
@@ -48,6 +51,7 @@ def janela_sistema():
     
     return sg.Window('Sistema de Busca', layout, element_justification='c', finalize=True)
 
+#janela4
 def janela_cadastroCliente():
     sg.theme('DarkBrown')
     layout = [

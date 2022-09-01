@@ -76,7 +76,7 @@ while True:
     if window == janela4 and event == 'CADASTRAR':
         nomeCliente = values['nomeCliente']
         cpfCliente = values['cpfCliente']
-        item = [True for x in clientes.clientes if x.cpfCliente == cpfCliente]
+        item = [True for x in clientes.clientes if x.cpf_cliente == cpfCliente]
         if True in item:
             sg.Popup('Cliente já Cadastrado')
             janela4.hide()
@@ -84,6 +84,21 @@ while True:
         else:
             clientes.clientes.append(clientes.Cliente(nomeCliente, cpfCliente))
             sg.Popup('Cadastro Realizado com Sucesso')
+            janela4.hide()
+            janela1 = janelas.janela_vendedor()
+    
+    if window == janela4 and event == "REMOVER CLIENTE":
+        nomeCliente = values['nomeCliente']
+        cpfCliente = values['cpfCliente']
+        item = [True for x in clientes.clientes if x.cpf_cliente == cpfCliente]
+        if True in item:
+            numeroIndex = [clientes.clientes.index(x) for x in clientes.clientes if x.cpf_cliente == cpfCliente]
+            sg.Popup(f'Cliente {clientes.clientes[numeroIndex[0]].nome_cliente} removido(a)!')
+            del clientes.clientes[numeroIndex[0]]
+            janela4.hide()
+            janela1 = janelas.janela_vendedor()
+        else:
+            sg.Popup('Cliente não cadastrado!')
             janela4.hide()
             janela1 = janelas.janela_vendedor()
         
