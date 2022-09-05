@@ -3,6 +3,7 @@ import janelas
 import vendedores
 import pickle
 import clientes
+import produtos
 
 #confere se há algum arquivo pkl para carregar
 try:
@@ -10,10 +11,12 @@ try:
         vendedores.vendedores = pickle.load(p)
     with open('clientes.pkl', 'rb') as p:
         clientes.clientes = pickle.load(p)
+    with open('produtos.pkl', 'rb') as p:
+        produtos.produtos = pickle.load(p)
 except:
     print("")    
 
-janela1,janela2,janela3,janela4 = janelas.janela_vendedor(), None, None, None
+janela1,janela2,janela3,janela4,janela5 = janelas.janela_vendedor(), None, None, None, None
 
 while True:
     window, event, values = sg.read_all_windows()
@@ -23,6 +26,8 @@ while True:
             arqVendedores = pickle.dump(vendedores.vendedores, p)
         with open('clientes.pkl', 'wb') as p:
             arqClientes = pickle.dump(clientes.clientes, p)
+        with open('produtos.pkl', 'wb') as p:
+            arqProdutos = pickle.dump(produtos.produtos, p)
         break
     
     #============= janela 1 =================
@@ -72,6 +77,11 @@ while True:
         janela3.hide()
         janela4 = janelas.janela_cadastroCliente()
         
+    if window == janela3 and event == "CADASTRAR PRODUTO":
+        janela3.hide()
+        janela5 = janelas.janela_cadastroProduto()
+        
+        
     #============= janela 4 =================
     if window == janela4 and event == 'CADASTRAR':
         nomeCliente = values['nomeCliente']
@@ -101,5 +111,9 @@ while True:
             sg.Popup('Cliente não cadastrado!')
             janela4.hide()
             janela1 = janelas.janela_vendedor()
+    
+    if window == janela4 and event == "VOLTAR":
+        janela4.hide()
+        janela1 = janelas.janela_vendedor()
         
         

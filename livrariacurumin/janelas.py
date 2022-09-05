@@ -63,3 +63,16 @@ def janela_cadastroCliente():
         [sg.Button('REMOVER CLIENTE')]
         ]
     return sg.Window('Cadastro de Cliente', layout, element_justification='c', finalize=True)
+
+#janela5
+def janela_cadastroProduto():
+    sg.theme('DarkBrown')
+    layout = [
+        [sg.Image('imagens/livraria2.png')],
+        [sg.Text('Qual produto você irá cadastrar?')],
+        [sg.Button('PAPELARIA')],
+        [sg.Button('LIVRO')],
+        [sg.Button('LP/CD')]
+    ]
+    return sg.Window('Cadastrar Produto', layout, element_justification='c', finalize=True)
+
