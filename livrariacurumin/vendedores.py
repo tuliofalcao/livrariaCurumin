@@ -35,4 +35,7 @@ class Vendedor:
     def adicionarItem(self, valor):
         return vendas.append(valor)
     
-    
+    def mostrarVendedores(vendedores):
+        v = '\n'.join([str((x.cpf_vendedor, x.nome_vendedor)) for x in vendedores])
+        return v
+            

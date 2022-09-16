@@ -15,7 +15,10 @@ def janela_vendedor():
         [sg.Push()],
         [sg.Push()],
         [sg.Text('Ainda não cadastrado?')],
-        [sg.Button('CADASTRE-SE')]
+        [sg.Button('CADASTRE-SE')],
+        [sg.Push()],
+        [sg.Push()],
+        [sg.Button('VISUALIZAR VENDEDORES')]
     ]
     
     return sg.Window('Login', layout, element_justification='c',finalize=True)
@@ -46,7 +49,9 @@ def janela_sistema():
         [sg.Text('Buscar produto')],
         [sg.Input(key='busca_produto')],
         [sg.Button('VOLTAR'),sg.Button('BUSCAR')],
-        [sg.Button('CADASTRAR CLIENTE'),sg.Button('CADASTRAR PRODUTO')]
+        [sg.Button('CADASTRAR CLIENTE'),sg.Button('CADASTRAR PRODUTO')],
+        [sg.Push()],
+        [sg.Button('VISUALIZAR PRODUTOS')]
     ]
     
     return sg.Window('Sistema de Busca', layout, element_justification='c', finalize=True)
@@ -60,7 +65,9 @@ def janela_cadastroCliente():
         [sg.Text('CPF do Cliente:')],
         [sg.Input(key='cpfCliente')],
         [sg.Button('VOLTAR'), sg.Button('CADASTRAR')],
-        [sg.Button('REMOVER CLIENTE')]
+        [sg.Button('REMOVER CLIENTE')],
+        [sg.Push()],
+        [sg.Button('VISUALIZAR CLIENTES')]
         ]
     return sg.Window('Cadastro de Cliente', layout, element_justification='c', finalize=True)
 
@@ -72,7 +79,63 @@ def janela_cadastroProduto():
         [sg.Text('Qual produto você irá cadastrar?')],
         [sg.Button('PAPELARIA')],
         [sg.Button('LIVRO')],
-        [sg.Button('LP/CD')]
+        [sg.Button('LP/CD')],
+        [sg.Push()],
+        [sg.Push()],
+        [sg.Button('VOLTAR')]
     ]
     return sg.Window('Cadastrar Produto', layout, element_justification='c', finalize=True)
 
+#janela6
+def janela_cadastroPapelaria():
+    sg.theme('DarkBrown')
+    layout = [
+        [sg.Image('imagens/livraria2.png')],
+        [sg.Text('Código:'), sg.Input(key='codigoPapelaria')],
+        [sg.Text('Tipo:'), sg.Input(key='tipoPapelaria')],
+        [sg.Text('Preço:'), sg.Input(key='precoPapelaria')],
+        [sg.Text('Quantidade:'), sg.Input(key='quantidadePapelaria')],
+        [sg.Button('CADASTRAR')],
+        [sg.Push()],
+        [sg.Push()],
+        [sg.Button('VOLTAR')]
+    ]
+    return sg.Window('Cadastrar Papelaria', layout, element_justification='center', finalize=True)
+
+#janela7
+def janela_cadastrarLivro():
+    sg.theme('DarkBrown')
+    layout = [
+        [sg.Image('imagens/livraria2.png')],
+        [sg.Text('Código:'),sg.Input(key='codigoLivro')],
+        [sg.Text('Tipo:'),sg.Input(key='tipoLivro')],
+        [sg.Text('Autor(a):'),sg.Input(key='autorLivro')],
+        [sg.Text('Título:'),sg.Input(key='tituloLivro')],
+        [sg.Text('Editora:'),sg.Input(key='editoraLivro')],
+        [sg.Text('Preço:'),sg.Input(key='precoLivro')],
+        [sg.Text('Quantidade:'), sg.Input(key='quantidadeLivro')],
+        [sg.Button('CADASTRAR')],
+        [sg.Push()],
+        [sg.Push()],
+        [sg.Button('VOLTAR')]
+    ]
+    return sg.Window('Cadastrar Livro', layout, element_justification='center', finalize=True)
+
+#janela8
+def janela_cadastrarLP_CD():
+    sg.theme('DarkBrown')
+    layout = [
+        [sg.Image('imagens/livraria2.png')],
+        [sg.Text('Código:'),sg.Input(key='codigoLP')],
+        [sg.Text('Tipo:'),sg.Input(key='tipoLP')],
+        [sg.Text('Artista:'),sg.Input(key='artistaLP')],
+        [sg.Text('Título:'),sg.Input(key='tituloLP')],
+        [sg.Text('Gravadora:'),sg.Input(key='gravadoraLP')],
+        [sg.Text('Preço:'),sg.Input(key='precoLP')],
+        [sg.Text('Quantidade:'), sg.Input(key='quantidadeLP')],
+        [sg.Button('CADASTRAR')],
+        [sg.Push()],
+        [sg.Push()],
+        [sg.Button('VOLTAR')]
+    ]
+    return sg.Window('Cadastrar LP / CD', layout, element_justification='center', finalize=True)

@@ -19,3 +19,6 @@ class Cliente():
     def setCpfCliente(self, valor):
         self.cpf_cliente = valor
     
+    def mostrarClientes(clientes):
+        c = '\n'.join([str((x.cpf_cliente, x.nome_cliente)) for x in clientes])
+        return c

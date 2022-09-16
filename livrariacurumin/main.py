@@ -16,7 +16,7 @@ try:
 except:
     print("")    
 
-janela1,janela2,janela3,janela4,janela5 = janelas.janela_vendedor(), None, None, None, None
+janela1,janela2,janela3,janela4,janela5,janela6,janela7,janela8 = janelas.janela_vendedor(),None,None,None,None,None,None,None
 
 while True:
     window, event, values = sg.read_all_windows()
@@ -46,6 +46,9 @@ while True:
             sg.Popup("Vendedor não cadastrado!")
             janela1.hide()
             janela1 = janelas.janela_vendedor()
+            
+    if window == janela1 and event == 'VISUALIZAR VENDEDORES':
+        sg.Popup(vendedores.Vendedor.mostrarVendedores(vendedores.vendedores))
     
     #============= janela 2 =================
         
@@ -81,6 +84,8 @@ while True:
         janela3.hide()
         janela5 = janelas.janela_cadastroProduto()
         
+    if window == janela3 and event == 'VISUALIZAR PRODUTOS':
+        sg.popup(produtos.Produto.mostrarProdutos(produtos.produtos))       
         
     #============= janela 4 =================
     if window == janela4 and event == 'CADASTRAR':
@@ -114,6 +119,72 @@ while True:
     
     if window == janela4 and event == "VOLTAR":
         janela4.hide()
-        janela1 = janelas.janela_vendedor()
+        janela1 = janelas.janela_sistema()
+        
+    if window == janela4 and event == 'VISUALIZAR CLIENTES':
+        sg.popup(clientes.Cliente.mostrarClientes(clientes.clientes))
+        
+    #============= janela 5 ==================================
+    if window == janela5 and event == 'PAPELARIA':
+        janela5.hide()
+        janela6 = janelas.janela_cadastroPapelaria()
+    
+    if window == janela5 and event == 'LIVRO':
+        janela5.hide()
+        janela7 = janelas.janela_cadastrarLivro()
+    
+    if window == janela5 and event == 'LP/CD':
+        janela5.hide()
+        janela8 = janelas.janela_cadastrarLP_CD()
+    
+    if window == janela5 and event == 'VOLTAR':
+        janela5.hide()
+        janela4 = janelas.janela_sistema() 
+    
+    #============= janela 6 ======================================
+    if window == janela6 and event == 'CADASTRAR':
+        codigoPapelaria = values['codigoPapelaria']
+        tipoPapelaria = values['tipoPapelaria']
+        precoPapelaria = values['precoPapelaria']
+        quantidadePapelaria = values['quantidadePapelaria']
+        item = [True for x in produtos.produtos if x.codigo == codigoPapelaria]
+        if True in item:
+            sg.Popup('Produto já cadastrado!')
+            janela6.hide()
+            janela5 = janelas.janela_cadastroProduto()
+        else:
+            produtos.produtos.append(produtos.Produto(codigoPapelaria,tipoPapelaria,precoPapelaria,quantidadePapelaria))
+            sg.Popup('Produto Cadastrado com Sucesso!')
+            janela6.hide()
+            janela5 = janelas.janela_cadastroProduto()
+    
+    if window == janela6 and event == 'VOLTAR':
+        janela6.hide()
+        janela5 = janelas.janela_sistema()
+        
+    #=============== janela 7 ====================================
+    if window == janela7 and event == 'CADASTRAR':
+        codigoLivro = values['codigoLivro']
+        tipoLivro = values['tipoLivro']
+        autorLivro = values['autorLivro']
+        tituloLivro = values['tituloLivro']
+        editoraLivro = values['editoraLivro']
+        precoLivro = values['precoLivro']
+        quantidadeLivro = values['quantidadeLivro']
+        item = [True for x in produtos.produtos if x.codigo == codigoLivro]
+        if True in item:
+            sg.Popup('Livro já cadastrado!')
+            janela7.hide()
+            janela5 = janelas.janela_cadastroProduto()
+        else:
+            produtos.produtos.append(produtos.Livro(codigoLivro,tipoLivro,autorLivro,tituloLivro,editoraLivro,precoLivro,quantidadeLivro))
+            sg.Popup('Livro Cadastrado com Sucesso!')
+            janela7.hide()
+            janela5 = janelas.janela_cadastroProduto()
+        
+        if window == janela7 and event == 'VOLTAR':
+            janela7.hide()
+            janela5 = janelas.janela_cadastroProduto()
+    
         
         

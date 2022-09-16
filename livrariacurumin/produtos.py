@@ -2,10 +2,9 @@ produtos = []
 
 class Produto:
     
-    def __init__(self, codigo, tipo, marca, preco, quantidade):
+    def __init__(self, codigo, tipo, preco, quantidade):
         self.codigo = codigo
         self.tipo = tipo
-        self.marca = marca
         self.preco = preco
         self.quantidade = quantidade
         
@@ -14,9 +13,6 @@ class Produto:
     
     def getTipo(self):
         return self.tipo
-    
-    def getMarca(self):
-        return self.marca
     
     def getPreco(self):
         return self.preco
@@ -29,21 +25,22 @@ class Produto:
     
     def setTipo(self, valor):
         self.tipo = valor
-        
-    def setMarca(self, valor):
-        self.marca = valor
     
     def setPreco(self, preco):
         self.preco = preco
         
     def setQuantidade(self, valor):
         self.quantidade = valor
+    
+    def mostrarProdutos(self):
+        m = '\n'.join([str((x.codigo, x.tipo)) for x in produtos])
+        return m
 
 
 class Livro(Produto):
     
-    def __init__(self, autor, titulo, editora):
-        Produto.__init__(codigo,tipo,preco,quantidade)
+    def __init__(self, codigo, tipo, autor, titulo, editora, preco, quantidade):
+        super().__init__(codigo,tipo,preco,quantidade)
         self.autor = autor
         self.titulo = titulo
         self.editora = editora
@@ -69,8 +66,8 @@ class Livro(Produto):
 
 class Disco(Produto):
     
-    def __init__(self, artista, titulo, gravadora):
-        Produto.__init__(codigo, tipo, preco, quantidade)
+    def __init__(self, codigo, tipo, artista, titulo, gravadora, preco, quantidade):
+        super().__init__(codigo, tipo, preco, quantidade)
         self.artista = artista
         self.titulo = titulo
         self.gravadora = gravadora
@@ -91,5 +88,5 @@ class Disco(Produto):
         self.titulo = valor
     
     def setGravadora(self, valor):
-        self.gravadora = gravadora
+        self.gravadora = valor
         
